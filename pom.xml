@@ -111,6 +111,22 @@
 			<artifactId>camel-activemq-starter</artifactId>
 			<version>3.4.3</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.apache.camel.springboot</groupId>
+			<artifactId>camel-ognl-starter</artifactId>
+			<version>3.4.3</version>
+			<!-- use the same version as your Camel core version -->
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.14</version>
+			<scope>provided</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>
