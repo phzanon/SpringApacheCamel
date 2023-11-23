@@ -1,10 +1,8 @@
 package com.apache.camel.example.camelexample.activeMQ;
 
 import com.apache.camel.example.camelexample.model.CamelModelRequest;
-import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
 
