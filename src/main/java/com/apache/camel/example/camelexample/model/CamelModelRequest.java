@@ -10,5 +10,6 @@ import lombok.*;
 @ToString
 public class CamelModelRequest {
     private String code;
+    private String messageFilter;
     private String message;
 }
