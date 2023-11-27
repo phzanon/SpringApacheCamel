@@ -1,6 +1,5 @@
 package com.apache.camel.example.camelexample.rest;
 
-import org.apache.camel.ExchangePattern;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.rest.RestBindingMode;
 import org.springframework.beans.factory.annotation.Value;

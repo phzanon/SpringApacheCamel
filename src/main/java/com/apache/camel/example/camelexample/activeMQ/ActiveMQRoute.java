@@ -3,14 +3,8 @@ package com.apache.camel.example.camelexample.activeMQ;
 import com.apache.camel.example.camelexample.model.CamelModelRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.camel.DynamicRouter;
-import org.apache.camel.Exchange;
-import org.apache.camel.Header;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
-
-import javax.xml.bind.JAXB;
-import java.io.StringWriter;
 
 @Component
 @Slf4j
