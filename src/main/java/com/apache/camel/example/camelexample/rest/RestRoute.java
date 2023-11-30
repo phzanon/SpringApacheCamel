@@ -2,9 +2,13 @@ package com.apache.camel.example.camelexample.rest;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.rest.RestBindingMode;
+import org.apache.camel.model.rest.VerbDefinition;
+import org.apache.tomcat.util.http.parser.MediaType;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
+
+import java.io.StringReader;
 
 @Component
 public class RestRoute extends RouteBuilder {
@@ -36,7 +40,9 @@ public class RestRoute extends RouteBuilder {
                 .bindingMode(RestBindingMode.auto);
 
         rest("/send")
-                .post().to( "activemq:queue:{{queue.name}}?requestTimeout=9000")
+                .post()
+                .produces("json")
+                .to( "activemq:queue:{{queue.name}}?requestTimeout=9000")
                 .responseMessage();
     }
 }
