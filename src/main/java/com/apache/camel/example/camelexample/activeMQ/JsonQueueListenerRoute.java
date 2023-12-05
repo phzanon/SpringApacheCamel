@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 public class JsonQueueListenerRoute extends RouteBuilder {
     @Override
     public void configure() throws Exception {
-        from("activemq:queue:json")
+        from("activemq:queue:{{queue.json}}")
                 .to("log:JsonQueueListenerRoute");
     }
 }

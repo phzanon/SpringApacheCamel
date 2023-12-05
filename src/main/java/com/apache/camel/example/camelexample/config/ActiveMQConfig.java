@@ -16,5 +16,6 @@ public class ActiveMQConfig {
     @PostConstruct
     public void init() throws Exception {
         context.addComponent("activemq", ActiveMQComponent.activeMQComponent("tcp://localhost:61616"));
+        context.getGlobalOptions().put("CamelJacksonEnableTypeConverter", "true");
     }
 }

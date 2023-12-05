@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.jacksonxml.JacksonXMLDataFormat;
+import org.apache.camel.model.dataformat.JsonLibrary;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -18,7 +19,7 @@ public class ActiveMQRoute extends RouteBuilder {
         jacksonDataFormat.setPrettyPrint(true);
         jacksonDataFormat.enableFeature(SerializationFeature.WRAP_ROOT_VALUE);
 
-        from("activemq:queue:teste")
+        from("activemq:queue:{{queue.name}}")
                 .log("Received Message from queue: ${body}")
                 .choice()
                     .when().ognl("request.body.code == 'xml' && request.body.messageFilter == 'xyz'")
@@ -35,10 +36,13 @@ public class ActiveMQRoute extends RouteBuilder {
                             }
                         })
                         .marshal(jacksonDataFormat)
-                        .to("activemq:queue:xml")
+                        .to("activemq:queue:{{queue.xml}}")
                         .unmarshal(jacksonDataFormat)
+                        .endChoice()
                     .when().ognl("request.body.code == 'json' && request.body.messageFilter == 'xyz'")
                         .log("Sending to JSON Queue")
-                        .to("activemq:queue:json");
+                        .marshal().json(JsonLibrary.Jackson)
+                        .to("activemq:queue:{{queue.json}}")
+                        .unmarshal().json().endChoice();
     }
 }

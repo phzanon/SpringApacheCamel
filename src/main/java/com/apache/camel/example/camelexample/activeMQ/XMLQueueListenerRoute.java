@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 public class XMLQueueListenerRoute extends RouteBuilder {
     @Override
     public void configure() throws Exception {
-        from("activemq:queue:xml")
+        from("activemq:queue:{{queue.xml}}")
                 .to("log:XMLQueueListenerRoute");
     }
 }
